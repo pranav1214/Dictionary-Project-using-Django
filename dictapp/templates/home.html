@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Dictionary Project</title>
+	<script type="text/javascript">
+		function validate(){
+			var n = document.getElementById('id_word')
+			var nr = /^[A-Za-z ]+$/
+			
+				if(!nr.test(n.value)){
+				alert("Name should contain letters")
+				n.value=""
+				n.focus()
+				return false
+			}
+		return true
+	}
+	</script>
+</head>
+<body>
+	<center>
+		<h1>Dictionary App</h1>
+		<form method = "POST" onsubmit="return validate()">
+		{% csrf_token %}
+		<table>
+			{{ fm }}
+		</table>
+			<br>
+			<input type="submit">
+		</form>
+			<h1> Word Entered: {{ words }}</h1>
+			{{ msg }}
+			{{ err }}
+
+	</center>
+
+
+</body>
+</html>
